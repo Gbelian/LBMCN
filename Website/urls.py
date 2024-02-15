@@ -41,7 +41,6 @@ urlpatterns = [
     path('/confirmation', views.confirmation, name ='confirmation'),
     path('/inscription', views.inscription, name ='inscription'),
     path('/newsletters', views.newsletters, name ='newsletters'),
-
      
 ]
 

@@ -21,31 +21,40 @@
 
 {% block content %}
     <!-- Carousel Start -->
-    <script src="https://www.youtube.com/iframe_api"></script>   
+    <script src="https://www.youtube.com/iframe_api"></script> 
     <div class="container-fluid header-carousel px-0 mb-5">
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% for publicite in publicites %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <img class="w-100" src="{{ publicite.photo.url }}" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-lg-7 text-start">
-                                    <h1 class="display-1 text-white animated slideInRight mb-3">{{ publicite.titre }}</h1>
-                                    <p class="mb-5 animated slideInRight">{{ publicite.contenu }}</p>
-                                    <a href="{{ publicite.pdf.url }}" class="btn btn-primary py-3 px-5 animated slideInRight">Explorez</a>
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img class="w-100" src="{{ publicite.photo.url }}" alt="Image">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <div class="row {% if forloop.first %}justify-content-start{% else %}justify-content-end{% endif %}">
+                                    <div class="col-lg-7 {% if forloop.first %}text-start{% else %}text-end{% endif %}">
+                                        <h1 class="display-1 text-white animated {% if forloop.first %}slideInRight{% else %}slideInLeft{% endif %} mb-3">{{ publicite.titre }}</h1>
+                                        <p class="mb-5 animated {% if forloop.first %}slideInRight{% else %}slideInLeft{% endif %}">{{ publicite.contenu }}</p>
+                                        <a href="{{ publicite.pdf.url }}" class="btn btn-primary py-3 px-5 animated {% if forloop.first %}slideInRight{% else %}slideInLeft{% endif %}">Explorez</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
+           
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
     
-    
+
     <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container">

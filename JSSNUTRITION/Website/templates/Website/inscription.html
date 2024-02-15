@@ -1,0 +1,137 @@
+
+{% extends "Website/nav.html" %}
+{% load static %}
+{% block nav %}
+<div class="navbar-nav">
+    <a href="{% url 'home' %}" class="nav-item nav-link">Accueil</a>
+    <a href="{% url 'about' %}" class="nav-item nav-link">A propos</a>
+    <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+        <div class="dropdown-menu bg-light m-0">
+            <a href="{% url 'features' %}" class="dropdown-item">Caractéristiques</a>
+            <a href="{% url 'team' %}" class="dropdown-item">Notre équipes</a>
+            <a href="{% url 'testimonial' %}" class="dropdown-item">Témoignages</a>
+            <a href="{% url 'appoinment' %}" class="dropdown-item">Rendez-vous</a>
+        </div>
+    </div>
+    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+    <a href="{% url 'inscription' %}" class="nav-item nav-link active">Inscription</a>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Inscription</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Inscription</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+           
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="mb-4">Rejoignez-nous dans la lutte contre le cancer du sein en participant à Projekt-SEIN. Inscrivez-vous en ligne, donnez un petit échantillon de sang, et contribuez à la recherche sur les biomarqueurs moléculaires et l'impact de la nutrition.</a>.</p>
+                    
+                    <form method="post" action="{% url 'inscription' %}">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="nom" placeholder="">
+                                    <label for="subject">Nom</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="prenom" placeholder="">
+                                    <label for="subject">Prénom</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="contact" placeholder="">
+                                    <label for="subject">Phone</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="profession" placeholder="">
+                                    <label for="subject">Profession</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="age" placeholder="">
+                                    <label for="name">Age</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="sexe" name="sexe" aria-label="Sexe">
+                                        <option value="" selected disabled>Choisissez une option</option>
+                                        <option value="M">Masculin</option>
+                                        <option value="F">Féminin</option>
+                                    </select>
+                                    <label for="sexe">Sexe</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="pays" placeholder="">
+                                    <label for="name">Pays</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="situation_matrimoniale" name="situation_matrimoniale" aria-label="Situation matrimoniale">
+                                        <option value="" selected disabled>Choisissez une option</option>
+                                        <option value="C">Célibataire</option>
+                                        <option value="M">Marié(e)</option>
+                                        <option value="D">Divorcé(e)</option>
+                                        <option value="V">Veuf/Veuve</option>
+                                    </select>
+                                    <label for="situation_matrimoniale">Situation matrimoniale</label>
+                                </div>
+                            </div>
+                            
+
+
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <img class="img-fluid" src="{% static 'Website/img/about-3.jpg' %}" alt="" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    {% endblock %}

@@ -1,0 +1,582 @@
+{% extends "Website/nav.html" %}
+{% load static %}
+{% block nav %}  
+<div class="navbar-nav">
+    <a href="{% url 'home' %}" class="nav-item nav-link active">Accueil</a>
+    <a href="{% url 'about' %}" class="nav-item nav-link">A propos</a>
+    <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+        <div class="dropdown-menu bg-light m-0">
+            <a href="{% url 'features' %}" class="dropdown-item">Caractéristiques</a>
+            <a href="{% url 'team' %}" class="dropdown-item">Notre équipes</a>
+            <a href="{% url 'testimonial' %}" class="dropdown-item">Témoignages</a>
+            <a href="{% url 'appoinment' %}" class="dropdown-item">Rendez-vous</a>
+        </div>
+    </div>
+    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+    <a href="{% url 'inscription' %}" class="nav-item nav-link">Inscription</a>
+</div>
+{% endblock %}
+
+{% block content %}
+    <!-- Carousel Start -->
+    <script src="https://www.youtube.com/iframe_api"></script>   
+    <div class="container-fluid header-carousel px-0 mb-5">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for publicite in publicites %}
+                <div class="carousel-item active">
+                    <img class="w-100" src="{{ publicite.photo.url }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7 text-start">
+                                    <h1 class="display-1 text-white animated slideInRight mb-3">{{ publicite.titre }}</h1>
+                                    <p class="mb-5 animated slideInRight">{{ publicite.contenu }}</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explorez</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ publicite.photo.url }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-end">
+                                <div class="col-lg-7 text-end">
+                                    <h1 class="display-1 text-white animated slideInLeft mb-3">{{ publicite.titre }}</h1>
+                                    <p class="mb-5 animated slideInLeft">{{ publicite.contenu }}</p>
+                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInLeft">Explorez</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+           
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <img class="img-fluid" src="{% static 'Website/img/Image2.jpg' %}">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="{% static 'Website/img/Image3.jpg' %}">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="{% static 'Website/img/about-3.jpg' %}">
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-primary w-100 h-100 mt-n5 ms-n5 d-flex flex-column align-items-center justify-content-center">
+                                <div class="icon-box-light">
+                                    <i class="bi bi-award text-dark"></i>
+                                </div>
+                                <h1 class="display-1 text-white mb-0" data-toggle="counter-up">24</h1>
+                                <small class="fs-5 text-white">Années d'experience</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-6 mb-4">Laboratoire de Biomarqueurs Moléculaires en Cancérologie et Nutrition</h1>
+                    <p class="mb-4">Un laboratoire de recherche et d'analyse des biomarqueurs moléculaires initiateurs des cancers et l'utilisation de la nutrition pour leur prévention et restauration des déficits moléculaires provocants les cancers et maladies cardio-vasculaires.</p>
+                    <div class="row g-4 g-sm-5 justify-content-center">
+                        <div class="col-sm-6">
+                            <div class="about-fact btn-square flex-column rounded-circle bg-primary ms-sm-auto">
+                                <p class="text-white mb-0">Nombres d'articles</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">80</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-start">
+                            <div class="about-fact btn-square flex-column rounded-circle bg-secondary me-sm-auto">
+                                <p class="text-white mb-0">Projets réalisés</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">25</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-fact mt-n130 btn-square flex-column rounded-circle bg-dark mx-sm-auto">
+                                <p class="text-white mb-0">Plus Clients Sastifaits</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">500</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+ 
+    <!-- Features Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-0 feature-row">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-award text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Équipements de Pointe pour l'Analyse Moléculaire</h5>
+                        <p class="mb-0">Nous utilisons des technologies avancées telles que la génomique, la transcriptomique et la protéomique pour analyser les biomarqueurs moléculaires liés au cancer et à la nutrition. </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-people text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Expertise Interdisciplinaire</h5>
+                        <p class="mb-0">Notre équipe de recherche regroupe des experts en cancérologie, nutrition, génomique et bioinformatique. Nous collaborons également avec des spécialistes externes pour enrichir nos travaux.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-cash-coin text-dark"></i>
+                        </div>
+                        <h5 class="mb-3"> Infrastructures pour les Études Épidémiologiques </h5>
+                        <p class="mb-0">Nous collectons, stockons et analysons des données cliniques et épidémiologiques de manière sécurisée. Cela nous permet de corréler les résultats moléculaires avec les antécédents médicaux des patients.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-headphones text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">collaboration</h5>
+                        <p class="mb-0">collaboration avec Sylvester Cancer Center de l'université de Miami</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid feature mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-6 pt-lg-5">
+                    <div class="bg-white p-5 mt-lg-5">
+                        <h1 class="display-6 mb-4 wow fadeIn" data-wow-delay="0.3s">Domaine de Travail & Contributions Scientifiques</h1>
+                        <p class="mb-4 wow fadeIn" data-wow-delay="0.4s">Nous opérons dans le domaine biomédical, combinant nos expertises en biologie et santé, santé publique et développement, ainsi que nutrition et diététique thérapeutique. Notre laboratoire a publié 80 articles dans des domaines biomédicaux variés, couvrant la biologie et la santé, la santé publique et le développement, ainsi que la nutrition et la diététique thérapeutique.</p>
+                        <div class="row g-5 pt-2 mb-5">
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="icon-box-primary mb-4">
+                                    <i class="bi bi-person-plus text-dark"></i>
+                                </div>
+                                <h5 class="mb-3">Experience Techniciens</h5>
+                                <span>Notre équipe dévouée est équipée des technologies les plus avancées pour une exploration approfondie.</span>
+                            </div>
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+                                <div class="icon-box-primary mb-4">
+                                    <i class="bi bi-check-all text-dark"></i>
+                                </div>
+                                <h5 class="mb-3">Spectrométrie de Masse</h5>
+                                <span>Technique puissante qui permet l'analyse précise et la caractérisation des composants moléculaires présents dans un échantillon.</span>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5 wow fadeIn" data-wow-delay="0.5s" href="">Lire la suite</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row h-100 align-items-end">
+
+                        <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                            <div class="d-flex align-items-center justify-content-center" style="min-height: 300px;">
+                                <button type="button" class="btn-play" data-bs-toggle="modal" data-bs-target="#videoModal"
+                                        onclick="playVideo('https://www.youtube.com/watch?v=om58tCf6t2Q')">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="bg-primary p-5">
+                                <div class="experience mb-4 wow fadeIn" data-wow-delay="0.3s">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-white">La préparation des échantillons</span>
+                                        <span class="text-white">90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="experience mb-4 wow fadeIn" data-wow-delay="0.4s">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-white">Précision des résultats</span>
+                                        <span class="text-white">95%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="experience mb-0 wow fadeIn" data-wow-delay="0.5s">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-white">Équipements de laboratoire</span>
+                                        <span class="text-white">90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+    <!-- Video Modal Start -->
+<!-- Video Modal Start -->
+<div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                    <!-- Remplacez 'YOUR_VIDEO_ID' par l'ID réel de votre vidéo YouTube -->
+                    <iframe class="embed-responsive-item" id="videoIframe" allowfullscreen
+                        allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Video Modal End -->
+
+     <!-- Service Start -->
+     <div class="container-fluid container-service py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="display-6 mb-3">Service de laboratoire fiable et de haute qualité</h1>
+                <p class="mb-5">Laboratoire universitaire travaillant en collaboration avec les médecins et chercheurs nationaux et internationaux.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-heart-pulse text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Spectrométrie de Masse</h4>
+                            <p class="mb-4">La spectrométrie de masse est une technique puissante qui permet l'analyse précise et la caractérisation des composants moléculaires présents dans un échantillon.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-lungs text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Séquençage de l'ADN </h4>
+                            <p class="mb-4">Permet d'identifier des mutations génétiques spécifiques associées au développement du cancer.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-virus text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Méthylation de l'ADN </h4>
+                            <p class="mb-4">Étude des modifications épigénétiques pour comprendre comment elles peuvent influencer le développement des cancers.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-capsule-pill text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Spectrométrie de Masse</h4>
+                            <p class="mb-4">Identification précise des composants moléculaires dans un échantillon, y compris les protéines, peptides, et métabolites.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-capsule text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Études Épidémiologiques</h4>
+                            <p class="mb-4">Analyse des données cliniques et épidémiologiques pour corréler les résultats moléculaires avec les antécédents médicaux des patients.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-prescription2 text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Des analyses de sang</h4>
+                            <p class="mb-4">Mesure des concentrations de marqueurs spécifiques associés à différents types de cancers, fournissant des indications sur la présence ou la progression de la maladie.</p>
+                        <a class="btn btn-light px-3" href="">Lire la suite<i class="bi bi-chevron-double-right ms-1"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- Appoinment Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-6 mb-4">Nous garantissons que vous obtiendrez toujours le meilleur résultat</h1>
+                    <p>Rejoignez-nous dans la lutte contre le cancer du sein en participant à Projekt-SEIN. Inscrivez-vous en ligne, donnez un petit échantillon de sang, et contribuez à la recherche sur les biomarqueurs moléculaires et l'impact de la nutrition. Votre participation peut faire la différence. Ensemble, combattons le cancer du sein. Chaque échantillon compte.</p>
+                    <p class="mb-4">Participez maintenant ! Rejoignez Projekt-SEIN pour un avenir sans cancer du sein. </p>
+                    <div class="d-flex align-items-start wow fadeIn" data-wow-delay="0.3s">
+                        <div class="icon-box-primary">
+                            <i class="bi bi-geo-alt text-dark fs-1"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Addresse</h5>
+                            <span>9C35+X7W, Cotonou, Bénin</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex align-items-start wow fadeIn" data-wow-delay="0.4s">
+                        <div class="icon-box-primary">
+                            <i class="bi bi-clock text-dark fs-1"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>Temps d'ouverture</h5>
+                            <span>Lundi-Vendredi 09h-17h</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <form method="post" action="{% url 'inscription' %}">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="nom" placeholder="">
+                                    <label for="subject">Nom</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="prenom" placeholder="">
+                                    <label for="subject">Prénom</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="contact" placeholder="">
+                                    <label for="subject">Phone</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="profession" placeholder="">
+                                    <label for="subject">Profession</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="age" placeholder="">
+                                    <label for="name">Age</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="sexe" name="sexe" aria-label="Sexe">
+                                        <option value="" selected disabled>Choisissez une option</option>
+                                        <option value="M">Masculin</option>
+                                        <option value="F">Féminin</option>
+                                    </select>
+                                    <label for="sexe">Sexe</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="pays" placeholder="">
+                                    <label for="name">Pays</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="situation_matrimoniale" name="situation_matrimoniale" aria-label="Situation matrimoniale">
+                                        <option value="" selected disabled>Choisissez une option</option>
+                                        <option value="C">Célibataire</option>
+                                        <option value="M">Marié(e)</option>
+                                        <option value="D">Divorcé(e)</option>
+                                        <option value="V">Veuf/Veuve</option>
+                                    </select>
+                                    <label for="situation_matrimoniale">Situation matrimoniale</label>
+                                </div>
+                            </div>
+                            
+
+
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5" type="submit">Soumettre</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Appoinment Start -->
+
+ 
+    <!-- Team Start -->
+    <div class="container-fluid container-team py-5">
+        <div class="container pb-5">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+                    <img class="img-fluid w-100" src="{% static 'Website/img/team-1.jpg' %}" alt="">
+                </div>
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-6 mb-3">D. Callinice Capo-chichi</h1>
+                    <p class="mb-1">Full Professor of Biochemistry, Molecular Biology and Nutrition</p>
+                    <p class="mb-5">BMCN, Cotonou, Bénin</p>
+                    <h3 class="mb-3">Biographie</h3>
+                    <p class="mb-4">Biomarkers initiating cancers and cancer prevention.Graduate student training to embrace cancer research and Nutrition</p>
+                    <p class="mb-4">Le PI du site au Bénin et j'ai la responsabilité de : 
+                        - connecter des urologues, des pathologistes, des oncologues, des gynécologues et des scientifiques de deux universités du Bénin, l'Université d'Abomey Calavi (UAC) et l'Université de Parakou (UP). L'UAC est affiliée au Centre National Hospitalier Universitaire (CNHU-HKM) tandis que l'UP est affiliée au Centre Hospitalier Universitaire Départemental du Borgou (CDHU-Borgou), 
+                        - examiner et soumettre le protocole de l'IRB avant que l'étude ne puisse commencer après avoir reçu l'approbation, 
+                        - concevoir des tâches pour tous les chercheurs impliqués dans le projet, 
+                        - coordonner les scientifiques et les médecins pour assurer la collecte et le traitement adéquats des échantillons
+                        - coordonner la gestion du budget avec le doyen et le comptable.</p>
+                    <div class="d-flex">
+                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                
+                <div class="row g-4">
+                    {% for team_member in teams %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{ team_member.photo.url }}" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-square btn-light mx-1" href="{{ team_member.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-light mx-1" href="{{ team_member.twitter }}"><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-light mx-1" href="{{ team_member.linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-square btn-light mx-1" href="{{ team_member.youtube }}"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-1">{{ team_member.nom }}</h5>
+                                <span>{{ team_member.poste }}</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    {% endfor %}
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+<!-- Testimonial Start -->
+<div class="container-fluid testimonial py-5">
+    <div class="container pt-5">
+        <div class="row gy-5 gx-0">
+            <div class="col-lg-6 pe-lg-5 wow fadeIn" data-wow-delay="0.3s">
+                <h1 class="display-6 text-white mb-4">Ce que disent les habitués de notre laboratoire !!</h1>
+                <p class="text-white mb-5">Le Laboratoire BMCN est bien plus qu'un lieu de recherche, c'est une communauté d'experts dévoués qui partagent une vision commune pour améliorer la compréhension des maladies et développer des solutions innovantes.</p>
+                <a href="" class="btn btn-primary py-3 px-5">More Testimonials</a>
+            </div>
+            <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="bg-white p-5">
+                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
+                        <div class="testimonial-item">
+                            <div class="icon-box-primary mb-4">
+                                <i class="bi bi-chat-left-quote text-dark"></i>
+                            </div>
+                            <p class="fs-5 mb-4">Une expérience scientifique inoubliable ! Contribuer aux recherches du Laboratoire BMCN m'a donné le sentiment de participer à quelque chose de vraiment significatif dans la lutte contre le cancer.</p>
+                            <div class="d-flex align-items-center">
+                                
+                                <img class="flex-shrink-0" src="{% static 'Website/img/testimonial-1.jpg' %}" alt="">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Prof. Luc Brun </h5>
+                                    <span class="text-primary">Université de Parakou</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="icon-box-primary mb-4">
+                                <i class="bi bi-chat-left-quote text-dark"></i>
+                            </div>
+                            <p class="fs-5 mb-4">La collaboration avec le Laboratoire BMCN a été extrêmement enrichissante. Leur approche multidisciplinaire et leur utilisation de technologies de pointe ouvrent de nouvelles perspectives passionnantes dans la recherche biomédicale.</p>
+                            <div class="d-flex align-items-center">
+                                <img class="flex-shrink-0" src="{% static 'Website/img/testimonial-2.jpg' %}" alt="">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Client Name</h5>
+                                    <span class="text-primary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+    function playVideo(videoUrl) {
+        // Obtenez l'ID de la vidéo depuis l'URL
+        var videoId = videoUrl.split('v=')[1];
+
+        // Mettez à jour l'URL de l'iframe avec l'ID de la vidéo
+        var iframe = document.getElementById('videoIframe');
+        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?enablejsapi=1';
+
+        // Ouvrez la modale
+        $('#videoModal').modal('show');
+    }
+</script>
+
+    {% endblock %}

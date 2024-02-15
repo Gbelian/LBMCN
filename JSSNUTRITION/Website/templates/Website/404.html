@@ -1,0 +1,59 @@
+
+{% extends "Website/nav.html" %}
+{% load static %}
+{% block nav %}
+<div class="navbar-nav">
+    <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+    <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+        <div class="dropdown-menu bg-light m-0">
+            <a href="{% url 'features' %}" class="dropdown-item">Features</a>
+            <a href="{% url 'team' %}" class="dropdown-item">Our Team</a>
+            <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+            <a href="{% url 'appoinment' %}" class="dropdown-item">Appoinment</a>
+        </div>
+    </div>
+    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+    <a href="{% url 'inscription' %}" class="nav-item nav-link">Inscription</a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">404 Error</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item" aria-current="page">404 Error</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- 404 Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                    <h1 class="display-1">404</h1>
+                    <h1 class="mb-4">Page non trouvé</h1>
+                    <p class="mb-4">Nous sommes désolés, la page que vous recherchez n'existe pas sur notre site web ! Vous pouvez peut-être visiter notre page d'accueil ou utiliser la fonction de recherche?</p>
+                    <a class="btn btn-primary py-3 px-5" href="{% url 'home' %}">Aller à l'acceuil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 404 End -->
+        
+    {% endblock %}
+
+    

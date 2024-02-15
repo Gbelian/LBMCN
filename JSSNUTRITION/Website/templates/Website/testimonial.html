@@ -1,0 +1,133 @@
+
+{% extends "Website/nav.html" %}
+{% load static %}
+{% block nav %}
+<div class="navbar-nav">
+    <div class="navbar-nav">
+        <a href="{% url 'home' %}" class="nav-item nav-link">Accueil</a>
+        <a href="{% url 'about' %}" class="nav-item nav-link">A propos</a>
+        <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+            <div class="dropdown-menu bg-light m-0">
+                <a href="{% url 'features' %}" class="dropdown-item ">Caractéristiques</a>
+                <a href="{% url 'team' %}" class="dropdown-item">Notre équipes</a>
+                <a href="{% url 'testimonial' %}" class="dropdown-item active">Témoignages</a>
+                <a href="{% url 'appoinment' %}" class="dropdown-item">Rendez-vous</a>
+            </div>
+        </div>
+        <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+        <a href="{% url 'inscription' %}" class="nav-item nav-link">Inscription</a>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Témoignages</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Témoignages</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+  <!-- Features Start -->
+  <div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-0 feature-row">
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-award text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Équipements de Pointe pour l'Analyse Moléculaire</h5>
+                    <p class="mb-0">Nous utilisons des technologies avancées telles que la génomique, la transcriptomique et la protéomique pour analyser les biomarqueurs moléculaires liés au cancer et à la nutrition. </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-people text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">Expertise Interdisciplinaire</h5>
+                    <p class="mb-0">Notre équipe de recherche regroupe des experts en cancérologie, nutrition, génomique et bioinformatique. Nous collaborons également avec des spécialistes externes pour enrichir nos travaux.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-cash-coin text-dark"></i>
+                    </div>
+                    <h5 class="mb-3"> Infrastructures pour les Études Épidémiologiques </h5>
+                    <p class="mb-0">Nous collectons, stockons et analysons des données cliniques et épidémiologiques de manière sécurisée. Cela nous permet de corréler les résultats moléculaires avec les antécédents médicaux des patients.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="feature-item border h-100 p-5">
+                    <div class="icon-box-primary mb-4">
+                        <i class="bi bi-headphones text-dark"></i>
+                    </div>
+                    <h5 class="mb-3">collaboration</h5>
+                    <p class="mb-0">collaboration avec Sylvester Cancer Center de l'université de Miami</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features End -->
+    
+    <!-- Testimonial Start -->
+<div class="container-fluid testimonial py-5">
+    <div class="container pt-5">
+        <div class="row gy-5 gx-0">
+            <div class="col-lg-6 pe-lg-5 wow fadeIn" data-wow-delay="0.3s">
+                <h1 class="display-6 text-white mb-4">Ce que disent les habitués de notre laboratoire !!</h1>
+                <p class="text-white mb-5">Le Laboratoire BMCN est bien plus qu'un lieu de recherche, c'est une communauté d'experts dévoués qui partagent une vision commune pour améliorer la compréhension des maladies et développer des solutions innovantes.</p>
+                <a href="" class="btn btn-primary py-3 px-5">More Testimonials</a>
+            </div>
+            <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="bg-white p-5">
+                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
+                        <div class="testimonial-item">
+                            <div class="icon-box-primary mb-4">
+                                <i class="bi bi-chat-left-quote text-dark"></i>
+                            </div>
+                            <p class="fs-5 mb-4">Une expérience scientifique inoubliable ! Contribuer aux recherches du Laboratoire BMCN m'a donné le sentiment de participer à quelque chose de vraiment significatif dans la lutte contre le cancer.</p>
+                            <div class="d-flex align-items-center">
+                                
+                                <img class="flex-shrink-0" src="{% static 'Website/img/testimonial-1.jpg' %}" alt="">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Client Name</h5>
+                                    <span class="text-primary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="icon-box-primary mb-4">
+                                <i class="bi bi-chat-left-quote text-dark"></i>
+                            </div>
+                            <p class="fs-5 mb-4">La collaboration avec le Laboratoire BMCN a été extrêmement enrichissante. Leur approche multidisciplinaire et leur utilisation de technologies de pointe ouvrent de nouvelles perspectives passionnantes dans la recherche biomédicale.</p>
+                            <div class="d-flex align-items-center">
+                                <img class="flex-shrink-0" src="{% static 'Website/img/testimonial-2.jpg' %}" alt="">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Client Name</h5>
+                                    <span class="text-primary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Testimonial End -->
+
+    {% endblock %}

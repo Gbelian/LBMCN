@@ -3,19 +3,19 @@
 {% load static %}
 {% block nav %}
 <div class="navbar-nav">
-    <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
-    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+    <a href="{% url 'home' %}" class="nav-item nav-link">Accueil</a>
+    <a href="{% url 'about' %}" class="nav-item nav-link">A propos</a>
     <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
     <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
         <div class="dropdown-menu bg-light m-0">
-            <a href="{% url 'features' %}" class="dropdown-item">Features</a>
-            <a href="{% url 'team' %}" class="dropdown-item">Our Team</a>
-            <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
-            <a href="{% url 'appoinment' %}" class="dropdown-item">Appoinment</a>
+            <a href="{% url 'features' %}" class="dropdown-item ">Caractéristiques</a>
+            <a href="{% url 'team' %}" class="dropdown-item">Notre équipes</a>
+            <a href="{% url 'testimonial' %}" class="dropdown-item">Témoignages</a>
+            <a href="{% url 'appoinment' %}" class="dropdown-item">Rendez-vous</a>
         </div>
     </div>
-    <a href="{% url 'contact' %}" class="nav-item nav-link ">Contact</a>
+    <a href="{% url 'contact' %}" class="nav-item nav-link  active">Contact</a>
     <a href="{% url 'inscription' %}" class="nav-item nav-link">Inscription</a>
 </div>
 {% endblock %}
@@ -29,7 +29,7 @@
             <h1 class="display-2 text-white mb-3 animated slideInDown">Contact</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Acceuil</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item" aria-current="page">Contact</li>
                 </ol>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-white">Mail</h5>
-                            <h2 class="text-white mb-0">BMCN.UAC@gmail.com</h2>
+                            <h2 class="text-white mb-0">bmcn.uac@gmail.com</h2>
                         </div>
                     </a>
                 </div>
@@ -83,25 +83,25 @@
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
+                                    <label for="name">Nom prenom</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
-                                    <label for="phone">Your phone</label>
+                                    <label for="phone">Numéro mobile</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
+                                    <label for="subject">Subjet</label>
                                 </div>
                             </div>
                             <div class="col-12">

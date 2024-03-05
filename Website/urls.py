@@ -23,7 +23,6 @@ from django.conf.urls.static import static
 
 from django.conf.urls import handler404
 
-from .views import erreur_404
 
 handler404 = views.handler404
 

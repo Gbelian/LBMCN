@@ -31,7 +31,6 @@ handler404 = views.handler404
 urlpatterns = [
     path('', views.home, name ='home'),
     path('/about', views.about, name ='about'),
-    path('erreur/', erreur_404, name='erreur_404'),
     path('/service', views.service, name ='service'),
     path('/contact', views.contact, name ='contact'),
     path('/team', views.team, name ='team'),

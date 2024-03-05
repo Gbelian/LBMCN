@@ -23,12 +23,10 @@ from Website.admin import custom_admin_site
 
 from django.conf.urls import handler404
 
-from Website.views import erreur_404
 
-handler404 = 'Website.views.erreur_404'
 
 urlpatterns = [
-    path('erreur/', erreur_404, name='erreur_404'),
+    
    # path("admin/", admin.site.urls),
     path('admin/', custom_admin_site.urls),
     path('', include('Website.urls')), 

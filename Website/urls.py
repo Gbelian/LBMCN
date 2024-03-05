@@ -25,7 +25,8 @@ from django.conf.urls import handler404
 
 from .views import erreur_404
 
-handler404 = 'Website.views.erreur_404'
+handler404 = views.handler404
+
 
 
 urlpatterns = [

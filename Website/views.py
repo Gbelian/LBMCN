@@ -90,5 +90,7 @@ def appoinment(request):
 
 
 
-def erreur_404(request, exception):
+from django.shortcuts import render
+
+def handler404(request, exception):
     return render(request, 'Website/404.html', status=404)

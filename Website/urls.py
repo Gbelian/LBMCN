@@ -30,16 +30,16 @@ handler404 = views.handler404
 
 urlpatterns = [
     path('', views.home, name ='home'),
-    path('/about', views.about, name ='about'),
-    path('/service', views.service, name ='service'),
-    path('/contact', views.contact, name ='contact'),
-    path('/team', views.team, name ='team'),
-    path('/features', views.features, name ='features'),
-    path('/testimonial', views.testimonial, name ='testimonial'),
-    path('/appoinment', views.appoinment, name ='appoinment'),
-    path('/confirmation', views.confirmation, name ='confirmation'),
-    path('/inscription', views.inscription, name ='inscription'),
-    path('/newsletters', views.newsletters, name ='newsletters'),
+    path('about', views.about, name ='about'),
+    path('service', views.service, name ='service'),
+    path('contact', views.contact, name ='contact'),
+    path('team', views.team, name ='team'),
+    path('features', views.features, name ='features'),
+    path('testimonial', views.testimonial, name ='testimonial'),
+    path('appoinment', views.appoinment, name ='appoinment'),
+    path('confirmation', views.confirmation, name ='confirmation'),
+    path('inscription', views.inscription, name ='inscription'),
+    path('newsletters', views.newsletters, name ='newsletters'),
      
 ]
 

@@ -13,6 +13,7 @@ class Publicite(models.Model):
 class Evenement(models.Model):
     nom = models.CharField(max_length=200)
     description = models.TextField()
+    lien = models.URLField(default='http://example.com')
     photo = models.ImageField(upload_to='evenement/img/', null=True, blank=True)
     pdf = models.FileField(upload_to='evenement/pdf/', null=True, blank=True)
     date_debut = models.DateTimeField(null=True, blank=True)

@@ -1,6 +1,37 @@
 {% extends "Website/nav.html" %}
 {% load static %}
 {% block nav %}  
+
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      
+    }
+    
+    
+    .container.counter {
+      color: white;
+      text-align: center;
+    }
+    
+    .counter h1 {
+      font-weight: normal;
+    }
+    
+    .counter li {
+      display: inline-block;
+      list-style-type: none;
+      text-transform: uppercase;
+    }
+    
+    .counter li span {
+      display: block;
+      font-size: 4.5rem;
+    }
+    </style>
+
 <div class="navbar-nav">
     <a href="{% url 'home' %}" class="nav-item nav-link active">Accueil</a>
     <a href="{% url 'about' %}" class="nav-item nav-link">A propos</a>
@@ -351,100 +382,91 @@
     </div>
     <!-- Service End -->
 
-
         <!-- Projects Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                     <p class="fs-5 fw-bold text-primary">Nos projets</p>
-                    <h1 class="display-5 mb-5">Vous pourvez particpez à nos projets</h1>
+                    <h1 class="display-5 mb-5">Vous pouvez participer à nos projets</h1>
                 </div>
                 <div class="row wow fadeInUp" data-wow-delay="0.3s">
                     <div class="col-12 text-center">
                         <ul class="list-inline rounded mb-5" id="portfolio-flters">
                             <li class="mx-2 active" data-filter="*">Tous</li>
-                            <li class="mx-2" data-filter=".first">A venir</li>
-                            <li class="mx-2" data-filter=".first">En cours</li>
-                            <li class="mx-2" data-filter=".second">Terminés</li>
+                            <li class="mx-2" data-filter=".a-venir">À venir</li>
+                            <li class="mx-2" data-filter=".en-cours">En cours</li>
+                            <li class="mx-2" data-filter=".termines">Terminés</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row g-4 portfolio-container">
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Landscaping</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                    {% for evenement in evenements %}
+                        <div class="col-lg-4 col-md-6 portfolio-item
+                        {% if evenement.date_debut <= maintenant and evenement.date_fin >= maintenant %} en-cours
+                        {% elif evenement.date_debut > maintenant %} a-venir
+                        {% else %} termines {% endif %}
+                        wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="portfolio-inner rounded">
+                                <img class="img-fluid" src="{{ evenement.photo.url }}" alt="{{ evenement.description }}">
+                                <div class="portfolio-text">
+                                    <h4 class="text-white mb-4">{{ evenement.nom }}</h4>
+                                    <h4 class="text-white mb-4" id="date">{{ evenement.date_debut }}</h4>
+        
+                                    {% if evenement.date_debut > maintenant %}
+                                    <div class="container counter" style="color: white; text-align: center;">
+                                        <ul style="list-style-type: none;">
+                                            <li style="display: inline-block; font-size: 1.5em; text-transform: uppercase; margin: 0 10px;">
+                                                <span id="days_{{ evenement.id }}" style="display: block; font-size: 1em;"></span>days
+                                            </li>
+                                            <li style="display: inline-block; font-size: 1.5em; text-transform: uppercase; margin: 0 10px;">
+                                                <span id="hours_{{ evenement.id }}" style="display: block; font-size: 1em;"></span>Hours
+                                            </li>
+                                            <li style="display: inline-block; font-size: 1.5em; text-transform: uppercase; margin: 0 10px;">
+                                                <span id="minutes_{{ evenement.id }}" style="display: block; font-size: 1em;"></span>Minutes
+                                            </li>
+                                            <li style="display: inline-block; font-size: 1.5em; text-transform: uppercase; margin: 0 10px;">
+                                                <span id="seconds_{{ evenement.id }}" style="display: block; font-size: 1em;"></span>Seconds
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <script>
+                                        // Récupérer la date de début de l'événement depuis le contexte Django
+                                        let dateDebut = new Date('{{ evenement.date_debut|date:"F j, Y H:i:s" }}').getTime();
+                                        const second = 1000,
+                                            minute = second * 60,
+                                            hour = minute * 60,
+                                            day = hour * 24;
+                                        
+                                        let x = setInterval(function() {
+                                            let now = new Date().getTime(),
+                                                distance = dateDebut - now;
+                                            
+                                            if (distance < 0) {
+                                                clearInterval(x);
+                                                document.getElementById('days_{{ evenement.id }}').innerText = 'Expired';
+                                                document.getElementById('hours_{{ evenement.id }}').innerText = 'Expired';
+                                                document.getElementById('minutes_{{ evenement.id }}').innerText = 'Expired';
+                                                document.getElementById('seconds_{{ evenement.id }}').innerText = 'Expired';
+                                            } else {
+                                                document.getElementById('days_{{ evenement.id }}').innerText = Math.floor(distance / (day));
+                                                document.getElementById('hours_{{ evenement.id }}').innerText = Math.floor((distance % (day)) / (hour));
+                                                document.getElementById('minutes_{{ evenement.id }}').innerText = Math.floor((distance % (hour)) / (minute));
+                                                document.getElementById('seconds_{{ evenement.id }}').innerText = Math.floor((distance % (minute)) / second);
+                                            }
+                                        }, second);
+                                    </script>
+                                    {% endif %}
+                                    <div class="d-flex">
+                                        <a class="btn btn-lg-square rounded-circle mx-2" href="{{ evenement.pdf.url }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-lg-square rounded-circle mx-2" href="{{ evenement.lien }}"><i class="fa fa-link"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Pruning plants</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Irrigation & Drainage</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Garden Maintenance</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Green Technology</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="portfolio-inner rounded">
-                            <img class="img-fluid" src="{% static 'Website/img/team-4.jpg' %}" alt="">
-                            <div class="portfolio-text">
-                                <h4 class="text-white mb-4">Urban Gardening</h4>
-                                <div class="d-flex">
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href="{% static 'Website/img/team-4.jpg' %}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
+        </div>        
         <!-- Projects End -->
 
 
@@ -709,6 +731,26 @@
         // Ouvrez la modale
         $('#videoModal').modal('show');
     }
+ </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#portfolio-flters li').click(function () {
+            var filter = $(this).data('filter');
+            $('#portfolio-flters li').removeClass('active');
+            $(this).addClass('active');
+            if (filter == '*') {
+                $('.portfolio-item').show();
+            } else {
+                $('.portfolio-item').hide();
+                $('.portfolio-item' + filter).show();
+            }
+        });
+    });
 </script>
+
+
+
 
     {% endblock %}

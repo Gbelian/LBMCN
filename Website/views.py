@@ -3,19 +3,29 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Team
 from .models import Publicite
+from .models import Evenement
 from django.shortcuts import render, redirect
 from .models import Contact , Newsletters
 from django.contrib import messages
 
+from django.utils import timezone
+
 def home(request):
+    maintenant = timezone.now()
+    evenements = Evenement.objects.all()
+    evenements_tous = Evenement.objects.all()
+    evenements_avenir = Evenement.objects.filter(date_debut__gt=maintenant)
+    evenements_termines = Evenement.objects.filter(date_fin__lt=maintenant)
     publicites = Publicite.objects.all()
     teams = Team.objects.all()
-    context = {'teams': teams, 'publicites': publicites}
+    context = {'teams': teams, 'publicites': publicites, 'evenements_tous': evenements_tous,'evenements_avenir': evenements_avenir,'evenements_termines': evenements_termines,'evenements': evenements,'maintenant': maintenant }
     return render(request, 'Website/index.html', context)
 
 
 def service(request):
-    return render(request, 'Website/service.html')
+    evenements = Evenement.objects.all()
+    context = {'evenements':evenements}
+    return render(request, 'Website/service.html',context)
 
 from .models import Inscription
 from .forms import InscriptionForm  # Create a Django form for your model

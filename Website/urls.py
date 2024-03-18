@@ -21,11 +21,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.conf.urls import handler404
+#from django.conf.urls import handler404
+#handler404 = views.handler404
 
-
-handler404 = views.handler404
-
+handler404 = 'Website.views.my_custom_404_view'
 
 
 urlpatterns = [

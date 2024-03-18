@@ -23,7 +23,7 @@ from Website.admin import custom_admin_site
 
 from django.conf.urls import handler404
 
-
+handler404 = "Website.views.handler404"
 
 urlpatterns = [
     

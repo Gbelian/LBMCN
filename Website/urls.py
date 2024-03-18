@@ -27,7 +27,6 @@ from django.conf.urls import handler404
 handler404 = views.handler404
 
 
-
 urlpatterns = [
     path('', views.home, name ='home'),
     path('about', views.about, name ='about'),

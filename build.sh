@@ -11,4 +11,4 @@ python manage.py migrate
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('beninbmcn', 'BMCN.UAC@gmail.com', 'beninbmcn')" | python manage.py shell
 
 # Lancez le serveur Gunicorn
-#gunicorn JSSNUTRITION.wsgi:application
+gunicorn JSSNUTRITION.wsgi:application
